@@ -38,7 +38,6 @@ export interface RichTextEditorProps {
   labels: RichTextEditorLabels;
   controls: ToolbarControl[][];
   mentions?: Record<string, any>;
-  readOnly?: boolean;
   modules?: Record<string, any>;
   formats?: string[];
 }
@@ -53,7 +52,6 @@ export const RichTextEditor = forwardRef<Editor, RichTextEditorProps>(
       labels,
       controls,
       mentions,
-      readOnly,
       modules: externalModules,
       formats,
       ...others
@@ -95,13 +93,13 @@ export const RichTextEditor = forwardRef<Editor, RichTextEditorProps>(
           defaultValue={defaultValue}
           onChange={onChange}
           ref={ref}
-          readOnly={readOnly}
           scrollingContainer="html"
           formats={formats}
         />
+
       </StyledRichTextEditor>
     );
   }
 );
 
-RichTextEditor.displayName = '@mantine/rte/RichTextEditor';
+RichTextEditor.displayName = 'RichTextEditor';
