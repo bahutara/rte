@@ -31,7 +31,7 @@ function defaultImageUpload(file: File): Promise<string> {
 }
 
 export interface RichTextEditorProps {
-  id: any;
+  id?: any;
   value?: string | Delta;
   defaultValue?: string | Delta;
   onChange?(
@@ -40,8 +40,8 @@ export interface RichTextEditorProps {
     sources: Sources,
     editor: Editor.UnprivilegedEditor
   ): void;
-  labels: RichTextEditorLabels;
-  controls: ToolbarControl[][];
+  labels?: RichTextEditorLabels;
+  controls?: ToolbarControl[][];
   mentions?: Record<string, any>;
   modules?: Record<string, any>;
   formats?: string[];

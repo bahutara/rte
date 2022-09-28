@@ -4,12 +4,14 @@ import { CONTROLS, ToolbarControl } from "./controls";
 import * as Styled from "./Toolbar.styles";
 
 export interface ToolbarProps {
-  controls: ToolbarControl[][];
-  labels: RichTextEditorLabels;
+  controls?: ToolbarControl[][];
+  labels?: RichTextEditorLabels;
   id?: string;
 }
 
 export function Toolbar({ controls, labels, id, ...others }: ToolbarProps) {
+  if(!labels) return
+  
   const groups = controls?.map((group, index) => {
     const items = group
       .filter((item) => CONTROLS[item])
