@@ -1,10 +1,6 @@
 import Editor, { Quill } from 'react-quill';
 
-import {
-  RichTextEditor,
-  DEFAULT_CONTROLS,
-  DEFAULT_LABELS,
-} from './components/RichTextEditor/RichTextEditor';
+import { RichTextEditor } from './components/RichTextEditor/RichTextEditor';
 
 export { RichTextEditor, DEFAULT_CONTROLS, DEFAULT_LABELS, Quill, Editor };
 export default RichTextEditor;
