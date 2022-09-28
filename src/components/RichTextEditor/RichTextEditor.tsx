@@ -1,25 +1,25 @@
-import React, { useMemo, useEffect, forwardRef, useRef } from 'react';
-import Editor, { Quill } from 'react-quill';
-import type { Delta, Sources } from 'quill';
-import 'quill-mention';
-import { useId } from '@mantine/hooks';
-import { Toolbar } from '../Toolbar/Toolbar';
-import { DEFAULT_CONTROLS } from './default-control';
-import { DEFAULT_LABELS, RichTextEditorLabels } from './default-labels';
-import { ToolbarControl } from '../Toolbar/controls';
-import { createImageBlot, ImageUploader } from '../../modules/image-uploader';
-import { replaceIcons } from '../../modules/icons';
-import { attachShortcuts } from '../../modules/shortcuts';
-import { StyledRichTextEditor } from './RichTextEditor.styles';
+import React from "react";
+import Editor, { Quill } from "react-quill";
+import type { Delta, Sources } from "quill";
+import "quill-mention";
+import { useId } from "@mantine/hooks";
+import { Toolbar } from "../Toolbar/Toolbar";
+import { DEFAULT_CONTROLS } from "./default-control";
+import { DEFAULT_LABELS, RichTextEditorLabels } from "./default-labels";
+import { ToolbarControl } from "../Toolbar/controls";
+import { createImageBlot, ImageUploader } from "../../modules/image-uploader";
+import { replaceIcons } from "../../modules/icons";
+import { attachShortcuts } from "../../modules/shortcuts";
+import { StyledRichTextEditor } from "./RichTextEditor.styles";
 
 export { DEFAULT_LABELS, DEFAULT_CONTROLS };
 
-const InlineBlot = Quill.import('blots/block');
+const InlineBlot = Quill.import("blots/block");
 const ImageBlot = createImageBlot(InlineBlot);
-Quill.register({ 'formats/imageBlot': ImageBlot });
-Quill.register('modules/imageUploader', ImageUploader);
+Quill.register({ "formats/imageBlot": ImageBlot });
+Quill.register("modules/imageUploader", ImageUploader);
 
-const icons = Quill.import('ui/icons');
+const icons = Quill.import("ui/icons");
 replaceIcons(icons);
 
 function defaultImageUpload(file: File): Promise<string> {
@@ -31,10 +31,15 @@ function defaultImageUpload(file: File): Promise<string> {
 }
 
 export interface RichTextEditorProps {
-  id: any
+  id: any;
   value?: string | Delta;
   defaultValue?: string | Delta;
-  onChange?(value: string, delta: Delta, sources: Sources, editor: Editor.UnprivilegedEditor): void;
+  onChange?(
+    value: string,
+    delta: Delta,
+    sources: Sources,
+    editor: Editor.UnprivilegedEditor
+  ): void;
   labels: RichTextEditorLabels;
   controls: ToolbarControl[][];
   mentions?: Record<string, any>;
@@ -42,7 +47,7 @@ export interface RichTextEditorProps {
   formats?: string[];
 }
 
-export const RichTextEditor = forwardRef<Editor, RichTextEditorProps>(
+export const RichTextEditor = React.forwardRef<Editor, RichTextEditorProps>(
   (props: RichTextEditorProps, ref) => {
     const {
       id,
@@ -58,9 +63,9 @@ export const RichTextEditor = forwardRef<Editor, RichTextEditorProps>(
     } = props;
 
     const uuid = useId(id);
-    const editorRef = useRef<Editor>();
+    const editorRef = React.useRef<Editor>();
 
-    const modules = useMemo(
+    const modules = React.useMemo(
       () => ({
         ...externalModules,
         ...(uuid ? { toolbar: { container: `#${uuid}` } } : undefined),
@@ -72,7 +77,7 @@ export const RichTextEditor = forwardRef<Editor, RichTextEditorProps>(
       [uuid, mentions, externalModules]
     );
 
-    useEffect(() => {
+    React.useEffect(() => {
       if (editorRef.current) {
         attachShortcuts(editorRef?.current?.editor?.keyboard);
       }
@@ -80,11 +85,7 @@ export const RichTextEditor = forwardRef<Editor, RichTextEditorProps>(
 
     return (
       <StyledRichTextEditor {...others}>
-        <Toolbar
-          controls={controls}
-          labels={labels}
-          id={uuid}
-        />
+        <Toolbar controls={controls} labels={labels} id={uuid} />
 
         <Editor
           theme="snow"
@@ -96,10 +97,9 @@ export const RichTextEditor = forwardRef<Editor, RichTextEditorProps>(
           scrollingContainer="html"
           formats={formats}
         />
-
       </StyledRichTextEditor>
     );
   }
 );
 
-RichTextEditor.displayName = 'RichTextEditor';
+RichTextEditor.displayName = "RichTextEditor";

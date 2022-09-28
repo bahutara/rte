@@ -1,8 +1,8 @@
-import React from 'react';
-import type { RichTextEditorLabels } from '../RichTextEditor/default-labels';
-import { ToolbarButton } from './ToolbarButton/ToolbarButton';
-import { CONTROLS, ToolbarControl } from './controls';
-import { StyledToolbar } from './Toolbar.styles';
+import React from "react";
+import type { RichTextEditorLabels } from "../RichTextEditor/default-labels";
+import { ToolbarButton } from "./ToolbarButton/ToolbarButton";
+import { CONTROLS, ToolbarControl } from "./controls";
+import * as Styled from "./Toolbar.styles";
 
 export interface ToolbarProps {
   controls: ToolbarControl[][];
@@ -10,13 +10,7 @@ export interface ToolbarProps {
   id?: string;
 }
 
-export function Toolbar({
-  controls,
-  labels,
-  id,
-  ...others
-}: ToolbarProps) {
-
+export function Toolbar({ controls, labels, id, ...others }: ToolbarProps) {
   const groups = controls?.map((group, index) => {
     const items = group
       .filter((item) => CONTROLS[item])
@@ -24,36 +18,23 @@ export function Toolbar({
         const Icon = CONTROLS[item].icon;
 
         return (
-          <ToolbarButton
-            /*css={{
-              '&:first-of-type': {
-borderTopLeftRadius: '$1',
-      borderBottomLeftRadius:'$1'              },
-
-              '&:last-of-type': {
-borderTopRightRadius: '$1',
-      borderBottomRightRadius: '$1'              },
-            }}*/
+          <Styled.ToolbarControl
             controls={CONTROLS[item].controls}
             value={(CONTROLS[item] as any).value}
             key={item}
             title={labels[item]}
           >
             <Icon size={18} stroke={1.5} />
-          </ToolbarButton>
+          </Styled.ToolbarControl>
         );
       });
 
-    return (
-      <StyledToolbar toolbarGroup key={index}>
-        {items}
-      </StyledToolbar>
-    );
+    return <Styled.ToolbarGroup key={index}>{items}</Styled.ToolbarGroup>;
   });
 
   return (
-    <StyledToolbar id={id} toolbar {...others}>
-      <StyledToolbar toolbarInner>{groups}</StyledToolbar>
-    </StyledToolbar>
+    <Styled.Toolbar id={id} {...others}>
+      <Styled.ToolbarInner>{groups}</Styled.ToolbarInner>
+    </Styled.Toolbar>
   );
 }
