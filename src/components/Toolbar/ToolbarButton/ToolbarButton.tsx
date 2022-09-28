@@ -1,13 +1,12 @@
 import React from 'react';
-import { ActionIcon, ActionIconProps } from '@mantine/core';
-import useStyles from './ToolbarButton.styles';
+import { StyledToolbarButton } from './TollbarButton.styles';
 
-interface ToolbarButtonProps extends ActionIconProps {
+interface ToolbarButtonProps {
   /** Control icon */
   children: React.ReactNode;
 
   /** Quill specific control */
-  controls: string;
+  controls?: string;
 
   /** Value for quill control */
   value?: string;
@@ -18,24 +17,6 @@ interface ToolbarButtonProps extends ActionIconProps {
   title?: string;
 }
 
-export function ToolbarButton({
-  className,
-  children,
-  controls,
-  value,
-  noActive,
-  ...others
-}: ToolbarButtonProps) {
-  const { classes, cx } = useStyles({ noActive }, { name: 'RichTextEditor' });
-
-  return (
-    <ActionIcon
-      className={cx(classes.control, `ql-${controls}`, className)}
-      value={value}
-      radius={0}
-      {...others}
-    >
-      {children}
-    </ActionIcon>
-  );
+export function ToolbarButton({ children, ...others }: ToolbarButtonProps) {
+  return <StyledToolbarButton {...others}>{children}</StyledToolbarButton>;
 }
