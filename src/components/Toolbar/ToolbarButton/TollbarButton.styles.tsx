@@ -5,13 +5,14 @@ export const StyledToolbarButton = styled('button', {
   border: `1px solid var(--laodeaksar-colors-body)`,
   color: 'var(--laodeaksar-colors-foreground)',
 
-  '&.ql-active':{
   variant: {
     noActive: {
       false: {
-        backgroundColor: 'var(--laodeaksar-colors-body)',
-        color: 'var(--laodeaksar-colors-foreground)',
+        '&.ql-active': {
+          backgroundColor: 'var(--laodeaksar-colors-body)',
+          color: 'var(--laodeaksar-colors-foreground)',
+        },
       },
     },
-  },}
+  },
 });

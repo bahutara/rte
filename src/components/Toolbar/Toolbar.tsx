@@ -7,22 +7,12 @@ import { StyledToolbar } from './Toolbar.styles';
 export interface ToolbarProps {
   controls: ToolbarControl[][];
   labels: RichTextEditorLabels;
-
-  /** Make toolbar sticky */
-  sticky?: boolean;
-
-  /** Top toolbar position in any valid css value */
-  stickyOffset?: number | string;
-
-  /** Id that is used to connect toolbar to editor */
   id?: string;
 }
 
 export function Toolbar({
   controls,
   labels,
-  stickyOffset = 0,
-  sticky = true,
   id,
   ...others
 }: ToolbarProps) {
@@ -35,25 +25,19 @@ export function Toolbar({
 
         return (
           <ToolbarButton
-          css={{
-                    '& + &': {
-          borderLeftWidth: 0,
-        },
+            /*css={{
+              '&:first-of-type': {
+borderTopLeftRadius: '$1',
+      borderBottomLeftRadius:'$1'              },
 
-        '&:first-of-type': {
-          blr: '$2',
-        },
-
-        '&:last-of-type': {
-          brr: '$2',
-        },
-
-          }}
+              '&:last-of-type': {
+borderTopRightRadius: '$1',
+      borderBottomRightRadius: '$1'              },
+            }}*/
             controls={CONTROLS[item].controls}
             value={(CONTROLS[item] as any).value}
             key={item}
             title={labels[item]}
-            noActive={(CONTROLS[item] as any).noActive}
           >
             <Icon size={18} stroke={1.5} />
           </ToolbarButton>
@@ -61,7 +45,8 @@ export function Toolbar({
       });
 
     return (
-      <StyledToolbar toolbarGroup key={index}>        {items}
+      <StyledToolbar toolbarGroup key={index}>
+        {items}
       </StyledToolbar>
     );
   });

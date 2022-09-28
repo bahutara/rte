@@ -3,22 +3,22 @@ import React from 'react';
 import { StyledToolbarButton } from './TollbarButton.styles';
 
 interface ToolbarButtonProps {
-  /** Control icon */
   children: React.ReactNode;
-
-  /** Quill specific control */
   controls?: string;
-
-  /** Value for quill control */
   value?: string;
-
-  /** Disable active styles */
-  noActive?: boolean;
-
   title?: string;
-  css?: CSS
+  css?: CSS;
 }
 
-export function ToolbarButton({ children, ...others }: ToolbarButtonProps) {
-  return <StyledToolbarButton {...others}>{children}</StyledToolbarButton>;
+export function ToolbarButton({
+  children,
+  controls,
+  value,
+  ...others
+}: ToolbarButtonProps) {
+  return (
+    <StyledToolbarButton className={`ql-${controls}`} value={value} {...others}>
+      {children}
+    </StyledToolbarButton>
+  );
 }
