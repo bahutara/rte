@@ -9,9 +9,7 @@ export interface ToolbarProps {
   id?: string;
 }
 
-export function Toolbar({ controls, labels, id, ...others }: ToolbarProps) {
-  if(!labels) return
-  
+export function Toolbar({ controls, labels, id, ...others }: ToolbarProps) {  
   const groups = controls?.map((group, index) => {
     const items = group
       .filter((item) => CONTROLS[item])
@@ -23,7 +21,7 @@ export function Toolbar({ controls, labels, id, ...others }: ToolbarProps) {
             controls={CONTROLS[item].controls}
             value={(CONTROLS[item] as any).value}
             key={item}
-            title={labels[item]}
+            title={(labels as any)[item]}
           >
             <Icon size={18} stroke={1.5} />
           </Styled.ToolbarControl>
