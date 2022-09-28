@@ -6,8 +6,9 @@ import { useId } from "@mantine/hooks";
 import { Toolbar } from "../Toolbar/Toolbar";
 import { createImageBlot, ImageUploader } from "../../modules/image-uploader";
 import { replaceIcons } from "../../modules/icons";
-import { attachShortcuts } from "../../modules/shortcuts";
 import { StyledRichTextEditor } from "./RichTextEditor.styles";
+import { ToolbarControl } from "../Toolbar/controls";
+import { RichTextEditorLabels } from "./default-labels";
 
 const InlineBlot = Quill.import("blots/block");
 const ImageBlot = createImageBlot(InlineBlot);
@@ -35,6 +36,8 @@ export interface RichTextEditorProps {
     sources: Sources,
     editor: Editor.UnprivilegedEditor
   ): void;
+  controls?: ToolbarControl[][];
+  labels?: RichTextEditorLabels;
   mentions?: Record<string, any>;
   modules?: Record<string, any>;
   formats?: string[];
@@ -46,6 +49,8 @@ export const RichTextEditor = (props: RichTextEditorProps) => {
     value,
     defaultValue,
     onChange,
+    controls,
+    labels,
     mentions,
     modules: externalModules,
     formats,
@@ -53,7 +58,6 @@ export const RichTextEditor = (props: RichTextEditorProps) => {
   } = props;
 
   const uuid = useId(id);
-  const editorRef = React.useRef<Editor>();
 
   const modules = React.useMemo(
     () => ({
@@ -67,15 +71,9 @@ export const RichTextEditor = (props: RichTextEditorProps) => {
     [uuid, mentions, externalModules]
   );
 
-  React.useEffect(() => {
-    if (editorRef.current) {
-      attachShortcuts(editorRef?.current?.editor?.keyboard);
-    }
-  }, []);
-
   return (
     <StyledRichTextEditor {...others}>
-      <Toolbar id={uuid} />
+      <Toolbar controls={controls} labels={labels} id={uuid} />
 
       <Editor
         theme="snow"
