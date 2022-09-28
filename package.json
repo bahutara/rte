@@ -47,6 +47,11 @@
     }
   ],
   "devDependencies": {
+    "@editorjs/code": "^2.7.0",
+    "@editorjs/image": "^2.6.2",
+    "@editorjs/link": "^2.4.1",
+    "@editorjs/quote": "^2.4.0",
+    "@editorjs/raw": "^2.3.1",
     "@size-limit/preset-small-lib": "^8.1.0",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
@@ -59,10 +64,17 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
+    "@editorjs/checklist": "^1.3.0",
+    "@editorjs/editorjs": "^2.25.0",
+    "@editorjs/header": "^2.6.2",
+    "@editorjs/list": "^1.7.0",
     "@laodeaksarr/design-system": "^1.1.1",
     "@mantine/hooks": "^5.4.1",
     "@tabler/icons": "^1.101.0",
+    "editorjs-style": "^3.0.3",
+    "editorjs-tooltip": "^1.1.8",
     "framer-motion": "^7.4.0",
+    "lodash": "^4.17.21",
     "quill-mention": "^3.1.0",
     "react-quill": "^2.0.0"
   }

@@ -6,3 +6,5 @@ export { RichTextEditor, Quill, Editor };
 export default RichTextEditor;
 
 export { Toolbar } from './components/Toolbar/Toolbar';
+
+export { default as Editorjs } from './components/Editor';
