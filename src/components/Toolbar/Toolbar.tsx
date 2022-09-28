@@ -9,7 +9,7 @@ export interface ToolbarProps {
   id?: string;
 }
 
-export function Toolbar({ controls, labels, id, ...others }: ToolbarProps) {  
+export function Toolbar({ controls, labels, id, ...others }: ToolbarProps) {
   const groups = controls?.map((group, index) => {
     const items = group
       .filter((item) => CONTROLS[item])

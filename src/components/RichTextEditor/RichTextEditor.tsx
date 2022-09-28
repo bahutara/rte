@@ -4,15 +4,10 @@ import type { Delta, Sources } from "quill";
 import "quill-mention";
 import { useId } from "@mantine/hooks";
 import { Toolbar } from "../Toolbar/Toolbar";
-import { DEFAULT_CONTROLS } from "./default-control";
-import { DEFAULT_LABELS, RichTextEditorLabels } from "./default-labels";
-import { ToolbarControl } from "../Toolbar/controls";
 import { createImageBlot, ImageUploader } from "../../modules/image-uploader";
 import { replaceIcons } from "../../modules/icons";
 import { attachShortcuts } from "../../modules/shortcuts";
 import { StyledRichTextEditor } from "./RichTextEditor.styles";
-
-export { DEFAULT_LABELS, DEFAULT_CONTROLS };
 
 const InlineBlot = Quill.import("blots/block");
 const ImageBlot = createImageBlot(InlineBlot);
@@ -40,66 +35,57 @@ export interface RichTextEditorProps {
     sources: Sources,
     editor: Editor.UnprivilegedEditor
   ): void;
-  labels?: RichTextEditorLabels;
-  controls?: ToolbarControl[][];
   mentions?: Record<string, any>;
   modules?: Record<string, any>;
   formats?: string[];
 }
 
-export const RichTextEditor = React.forwardRef<Editor, RichTextEditorProps>(
-  (props: RichTextEditorProps, ref) => {
-    const {
-      id,
-      value,
-      defaultValue,
-      onChange,
-      labels,
-      controls,
-      mentions,
-      modules: externalModules,
-      formats,
-      ...others
-    } = props;
+export const RichTextEditor = (props: RichTextEditorProps) => {
+  const {
+    id,
+    value,
+    defaultValue,
+    onChange,
+    mentions,
+    modules: externalModules,
+    formats,
+    ...others
+  } = props;
 
-    const uuid = useId(id);
-    const editorRef = React.useRef<Editor>();
+  const uuid = useId(id);
+  const editorRef = React.useRef<Editor>();
 
-    const modules = React.useMemo(
-      () => ({
-        ...externalModules,
-        ...(uuid ? { toolbar: { container: `#${uuid}` } } : undefined),
-        mention: mentions,
-        imageUploader: {
-          upload: (file: File) => defaultImageUpload(file),
-        },
-      }),
-      [uuid, mentions, externalModules]
-    );
+  const modules = React.useMemo(
+    () => ({
+      ...externalModules,
+      ...(uuid ? { toolbar: { container: `#${uuid}` } } : undefined),
+      mention: mentions,
+      imageUploader: {
+        upload: (file: File) => defaultImageUpload(file),
+      },
+    }),
+    [uuid, mentions, externalModules]
+  );
 
-    React.useEffect(() => {
-      if (editorRef.current) {
-        attachShortcuts(editorRef?.current?.editor?.keyboard);
-      }
-    }, []);
+  React.useEffect(() => {
+    if (editorRef.current) {
+      attachShortcuts(editorRef?.current?.editor?.keyboard);
+    }
+  }, []);
 
-    return (
-      <StyledRichTextEditor {...others}>
-        <Toolbar controls={controls} labels={labels} id={uuid} />
+  return (
+    <StyledRichTextEditor {...others}>
+      <Toolbar id={uuid} />
 
-        <Editor
-          theme="snow"
-          modules={modules}
-          value={value}
-          defaultValue={defaultValue}
-          onChange={onChange}
-          ref={ref}
-          scrollingContainer="html"
-          formats={formats}
-        />
-      </StyledRichTextEditor>
-    );
-  }
-);
-
-RichTextEditor.displayName = "RichTextEditor";
+      <Editor
+        theme="snow"
+        modules={modules}
+        value={value}
+        defaultValue={defaultValue}
+        onChange={onChange}
+        scrollingContainer="html"
+        formats={formats}
+      />
+    </StyledRichTextEditor>
+  );
+}
