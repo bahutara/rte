@@ -1,17 +1,11 @@
 import React from 'react';
-import { DefaultProps, Selectors } from '@mantine/core';
 import type { RichTextEditorLabels } from '../RichTextEditor/default-labels';
 import { ToolbarButton } from './ToolbarButton/ToolbarButton';
 import { CONTROLS, ToolbarControl } from './controls';
-import useStyles from './Toolbar.styles';
+import { StyledToolbar } from './Toolbar.styles';
 
-export type ToolbarStylesNames = Selectors<typeof useStyles>;
-
-export interface ToolbarProps extends DefaultProps<ToolbarStylesNames> {
-  /** Toolbar controls divided into groups */
+export interface ToolbarProps {
   controls: ToolbarControl[][];
-
-  /** Labels used for all toolbar controls */
   labels: RichTextEditorLabels;
 
   /** Make toolbar sticky */
@@ -29,19 +23,11 @@ export function Toolbar({
   labels,
   stickyOffset = 0,
   sticky = true,
-  className,
-  classNames,
-  styles,
   id,
-  unstyled,
   ...others
 }: ToolbarProps) {
-  const { classes, cx } = useStyles(
-    { sticky, stickyOffset },
-    { classNames, styles, unstyled, name: 'RichTextEditor' }
-  );
 
-  const groups = controls.map((group, index) => {
+  const groups = controls?.map((group, index) => {
     const items = group
       .filter((item) => CONTROLS[item])
       .map((item) => {
@@ -49,7 +35,20 @@ export function Toolbar({
 
         return (
           <ToolbarButton
-            className={classes.toolbarControl}
+          css={{
+                    '& + &': {
+          borderLeftWidth: 0,
+        },
+
+        '&:first-of-type': {
+          blr: '$2',
+        },
+
+        '&:last-of-type': {
+          brr: '$2',
+        },
+
+          }}
             controls={CONTROLS[item].controls}
             value={(CONTROLS[item] as any).value}
             key={item}
@@ -62,15 +61,14 @@ export function Toolbar({
       });
 
     return (
-      <div className={classes.toolbarGroup} key={index}>
-        {items}
-      </div>
+      <StyledToolbar toolbarGroup key={index}>        {items}
+      </StyledToolbar>
     );
   });
 
   return (
-    <div id={id} className={cx(classes.toolbar, className)} {...others}>
-      <div className={classes.toolbarInner}>{groups}</div>
-    </div>
+    <StyledToolbar id={id} toolbar {...others}>
+      <StyledToolbar toolbarInner>{groups}</StyledToolbar>
+    </StyledToolbar>
   );
 }

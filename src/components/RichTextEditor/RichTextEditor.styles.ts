@@ -1,411 +1,297 @@
-        import { createStyles, MantineNumberSize } from '@mantine/core';
+import { Box, Shadows, styled } from '@laodeaksarr/design-system';
 
-        export interface RichTextEditorStylesParams {
-          saveLabel: string;
-          editLabel: string;
-          removeLabel: string;
-          radius: MantineNumberSize;
-          readOnly: boolean;
-        }
+export const StyledRichTextEditor = styled(Box, {
+  fontSize: '$2',
+  border: `1px solid var(--laodeaksar-colors-foregroumd)`,
+  backgroundColor: 'var(--laodeaksar-colors-body)',
+  borderRadius: '$1',
+  position: 'relative',
+  color: 'var(--laodeaksar-colors-typeface-primary)',
 
-        export default createStyles(
-          (
-            theme,
-            {
-              saveLabel,
-              removeLabel,
-              editLabel,
-              radius,
-              readOnly,
-            }: RichTextEditorStylesParams
-          ) => ({
-            toolbar: {
-              display: readOnly ? 'none' : undefined,
-            },
+  '& .ql-toolbar': {
+    borderTopRightRadius: '$2',
+    borderTopLeftRadius: '$2',
+  },
 
-            root: {
-              ...theme.fn.fontStyles(),
-              fontSize: theme.fontSizes.sm,
-              border: `1px solid ${
-                theme.colorScheme === 'dark'
-                  ? theme.colors.dark[5]
-                  : theme.colors.gray[4]
-              }`,
-              backgroundColor:
-                theme.colorScheme === 'dark'
-                  ? theme.colors.dark[6]
-                  : theme.white,
-              borderRadius: theme.fn.radius(radius),
-              position: 'relative',
-              color:
-                theme.colorScheme === 'dark'
-                  ? theme.colors.dark[0]
-                  : theme.black,
+  '& .ql-container': {
+    position: 'relative',
+    boxSizing: 'border-box',
+    height: '100%',
+    margin: 0,
+    lineHeight: '$loose',
+  },
 
-              '& .ql-toolbar': {
-                borderTopRightRadius: theme.fn.radius(radius),
-                borderTopLeftRadius: theme.fn.radius(radius),
-              },
+  '& .ql-editor': {
+    whiteSpace: 'pre-wrap',
+    outline: 'none',
+    padding: `$2 $3`,
+  },
 
-              '& .ql-container': {
-                position: 'relative',
-                boxSizing: 'border-box',
-                height: '100%',
-                margin: 0,
-                lineHeight: theme.lineHeight,
-              },
+  '& .ql-container.ql-disabled .ql-tooltip': {
+    display: 'none',
+  },
 
-              '& .ql-editor': {
-                whiteSpace: 'pre-wrap',
-                outline: 'none',
-                padding: `${theme.spacing.sm}px ${theme.spacing.md}px`,
-              },
+  '& .ql-tooltip': {
+    position: 'absolute',
+    zIndex: 1,
+    backgroundColor: 'var(--laodeaksar-colors-body)',
+    padding: `$1 $2`,
+    border: `1px solid var(--laodeaksar-colors-foreground)`,
+    boxShadow: Shadows[1],
+    borderRadius: '$1',
+    display: 'flex',
+    alignItems: 'center',
+  },
 
-              '& .ql-container.ql-disabled .ql-tooltip': {
-                display: 'none',
-              },
+  '& .ql-action::before': {
+    content: `"Edit"`,
+    cursor: 'pointer',
+    display: 'block',
+    whiteSpace: 'nowrap',
+    height: 32,
+    lineHeight: '32px',
+    backgroundColor: 'var(--laodeaksar-colors-body)',
+    borderRadius: '$0',
+    fontWeight: 500,
+    padding: `0 $4`,
+    marginRight: '$2',
+    fontSize: '$2',
+  },
 
-              '& .ql-tooltip': {
-                position: 'absolute',
-                zIndex: 1,
-                backgroundColor:
-                  theme.colorScheme === 'dark'
-                    ? theme.colors.dark[5]
-                    : theme.white,
-                padding: `${theme.spacing.xs}px ${theme.spacing.md}px`,
-                border: `1px solid ${
-                  theme.colorScheme === 'dark'
-                    ? theme.colors.dark[5]
-                    : theme.colors.gray[2]
-                }`,
-                boxShadow: theme.shadows.sm,
-                borderRadius: theme.radius.sm,
-                display: 'flex',
-                alignItems: 'center',
-              },
+  '& .ql-remove::before': {
+    content: `"Remove"`,
+    cursor: 'pointer',
+    color: 'var(--laodeaksar-colors-body)',
+    fontSize: '$2',
+    display: 'block',
+    height: 32,
+    lineHeight: '32px',
+  },
 
-              '& .ql-action::before': {
-                content: `"${editLabel}"`,
-                cursor: 'pointer',
-                display: 'block',
-                whiteSpace: 'nowrap',
-                height: 32,
-                lineHeight: '32px',
-                backgroundColor: theme.fn.variant({ variant: 'filled' })
-                  .background,
-                color: theme.white,
-                borderRadius: theme.radius.sm,
-                fontWeight: 500,
-                padding: `0 ${theme.spacing.md}px`,
-                marginRight: theme.spacing.sm,
-                fontSize: theme.fontSizes.sm,
-              },
+  '& .ql-hidden': {
+    display: 'none',
+  },
 
-              '& .ql-remove::before': {
-                content: `"${removeLabel}"`,
-                cursor: 'pointer',
-                color: theme.colors.red[theme.colorScheme === 'dark' ? 5 : 7],
-                fontSize: theme.fontSizes.sm,
-                display: 'block',
-                height: 32,
-                lineHeight: '32px',
-              },
+  '& .ql-preview': {
+    display: 'inline-block',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    maxWidth: 180,
+    marginRight: '$2',
+  },
 
-              '& .ql-hidden': {
-                display: 'none',
-              },
+  '& .ql-editing .ql-preview': {
+    display: 'none',
+  },
 
-              '& .ql-preview': {
-                display: 'inline-block',
-                whiteSpace: 'nowrap',
-                textOverflow: 'ellipsis',
-                overflow: 'hidden',
-                maxWidth: 180,
-                marginRight: theme.spacing.md,
-              },
+  '& .ql-editing .ql-remove': {
+    display: 'none',
+  },
 
-              '& .ql-editing .ql-preview': {
-                display: 'none',
-              },
+  '& .ql-editing .ql-action::before': {
+    content: `"Save"`,
+    marginRight: 0,
+  },
 
-              '& .ql-editing .ql-remove': {
-                display: 'none',
-              },
+  '& .ql-tooltip.ql-editing input': {
+    display: 'block',
+  },
 
-              '& .ql-editing .ql-action::before': {
-                content: `"${saveLabel}"`,
-                marginRight: 0,
-              },
+  '& .ql-tooltip input': {
+    display: 'none',
+    WebkitTapHighlightColor: 'transparent',
+    height: 34,
+    appearance: 'none',
+    resize: 'none',
+    boxSizing: 'border-box',
+    fontSize: '$2',
+    width: '100%',
+    color: 'var(--laodeaksar-colors-body)',
+    textAlign: 'left',
+    paddingLeft: '$2',
+    paddingRight: '$2',
+    borderRadius: '$2',
+    marginRight: '$3',
+    border: `1px solid var(--laodeaksar-colors-body)`,
+    backgroundColor: 'var(--laodeaksar-colors-body)',
 
-              '& .ql-tooltip.ql-editing input': {
-                display: 'block',
-              },
+    '&::placeholder': {
+      opacity: 1,
+      userSelect: 'none',
+      color: 'var(--laodeaksar-colors-body)',
+    },
 
-              '& .ql-tooltip input': {
-                display: 'none',
-                WebkitTapHighlightColor: 'transparent',
-                height: 34,
-                appearance: 'none',
-                resize: 'none',
-                boxSizing: 'border-box',
-                fontSize: theme.fontSizes.sm,
-                width: '100%',
-                color:
-                  theme.colorScheme === 'dark'
-                    ? theme.colors.dark[0]
-                    : theme.black,
-                textAlign: 'left',
-                paddingLeft: theme.spacing.sm,
-                paddingRight: theme.spacing.sm,
-                borderRadius: theme.radius.sm,
-                marginRight: theme.spacing.md,
-                border: `1px solid ${
-                  theme.colorScheme === 'dark'
-                    ? theme.colors.dark[4]
-                    : theme.colors.gray[4]
-                }`,
-                backgroundColor:
-                  theme.colorScheme === 'dark'
-                    ? theme.colors.dark[6]
-                    : theme.white,
+    '&:focus': {
+      outline: 'none',
+      borderColor: 'var(--laodeaksar-colors-body)',
+    },
+  },
 
-                '&::placeholder': {
-                  opacity: 1,
-                  userSelect: 'none',
-                  color:
-                    theme.colorScheme === 'dark'
-                      ? theme.colors.dark[3]
-                      : theme.colors.gray[5],
-                },
+  '& .ql-clipboard': {
+    left: '-100000px',
+    height: '1px',
+    overflowY: 'hidden',
+    position: 'fixed',
+    top: '50%',
+  },
 
-                '&:focus': {
-                  outline: 'none',
-                  borderColor:
-                    theme.colors[theme.primaryColor][
-                      theme.colorScheme === 'dark' ? 8 : 5
-                    ],
-                },
-              },
+  '& .ql-align-center': {
+    textAlign: 'center',
+  },
 
-              '& .ql-clipboard': {
-                left: '-100000px',
-                height: '1px',
-                overflowY: 'hidden',
-                position: 'fixed',
-                top: '50%',
-              },
+  '& .ql-align-right': {
+    textAlign: 'right',
+  },
 
-              '& .ql-align-center': {
-                textAlign: 'center',
-              },
+  '& .ql-mention-list-container': {
+    border: `1px solid var(--laodeaksar-colors-body)`,
+    backgroundColor: 'var(--laodeaksar-colors-body)',
+    borderRadius: '$1',
+    overflow: 'hidden',
 
-              '& .ql-align-right': {
-                textAlign: 'right',
-              },
+    '& .ql-mention-list': {
+      color: 'var(--laodeaksar-colors-body)',
+      paddingLeft: 0,
+      marginTop: 0,
+      margin: 0,
+      listStyleType: 'none',
 
-              '& .ql-mention-list-container': {
-                border: `1px solid ${
-                  theme.colorScheme === 'dark'
-                    ? theme.colors.dark[5]
-                    : theme.colors.gray[4]
-                }`,
-                backgroundColor:
-                  theme.colorScheme === 'dark'
-                    ? theme.colors.dark[6]
-                    : theme.white,
-                borderRadius: theme.radius.sm,
-                overflow: 'hidden',
-                
-                '& .ql-mention-list': {
-                  color:
-                    theme.colorScheme === 'dark'
-                      ? theme.colors.dark[0]
-                      : theme.colors.gray[7],
-                  paddingLeft: 0,
-                  marginTop: 0,
-                  margin: 0,
-                  listStyleType: 'none',
+      '& .ql-mention-list-item': {
+        padding: '$2',
+        textDecoration: 'none',
+        cursor: 'pointer',
+      },
 
-                  '& .ql-mention-list-item': {
-                    padding: theme.spacing.xs,
-                    textDecoration: 'none',
-                    cursor: 'pointer',
-                  },
+      '& .selected': {
+        backgroundColor: 'var(--laodeaksar-colors-body)',
+        color: 'var(--laodeaksar-colors-body)',
+        textDecoration: 'none',
+      },
+    },
+  },
 
-                  '& .selected': {
-                    backgroundColor:
-                      theme.colorScheme === 'dark'
-                        ? theme.colors.dark[4]
-                        : theme.colors.gray[0],
-                    color:
-                      theme.colorScheme === 'dark' ? theme.white : theme.black,
-                    textDecoration: 'none',
-                  },
-                },
-              },
+  '& .mention': {
+    display: 'inline-block',
+    color: 'var(--laodeaksar-colors-body)',
+    backgroundColor: 'var(--laodeaksar-colors-body)',
+    padding: '3px 5px',
+    marginRight: 2,
+    borderRadius: '$0',
+    userSelect: 'all',
+    pointerEvents: 'none',
+  },
 
-              '& .mention': {
-                display: 'inline-block',
-                color:
-                  theme.colorScheme === 'dark'
-                    ? theme.colors.dark[0]
-                    : theme.black,
-                backgroundColor:
-                  theme.colorScheme === 'dark'
-                    ? theme.colors.dark[4]
-                    : theme.colors[theme.primaryColor][0],
-                padding: '3px 5px',
-                marginRight: 2,
-                borderRadius: theme.radius.sm,
-                userSelect: 'all',
-                pointerEvents: 'none',
-              },
+  '& iframe.ql-video': {
+    width: '100%',
+    height: 400,
 
-              '& iframe.ql-video': {
-                width: '100%',
-                height: 400,
+    '@media (max-width: 755px)': {
+      height: 220,
+    },
+  },
 
-                '@media (max-width: 755px)': {
-                  height: 220,
-                },
-              },
+  '& a': {
+    color: 'var(--laodeaksar-colors-body)',
+    textDecoration: 'none',
+  },
 
-              '& a': {
-                color:
-                  theme.colors[theme.primaryColor][
-                    theme.colorScheme === 'dark' ? 4 : 7
-                  ],
-                textDecoration: 'none',
-              },
+  '& h1, & h2, & h3, & h4, & h5, & h6': {
+    fontFamily: '$display',
+    fontWeight: '$2',
+    marginTop: 0,
+  },
 
-              '& h1, & h2, & h3, & h4, & h5, & h6': {
-                fontFamily: theme.headings.fontFamily,
-                fontWeight: theme.headings.fontWeight,
-                marginTop: 0,
-              },
+  '& ol, & ul': {
+    marginTop: '$2',
+    paddingLeft: `$3`,
+    listStylePosition: 'outside',
+  },
 
-              '& ol, & ul': {
-                marginTop: theme.spacing.sm,
-                paddingLeft: `calc(${theme.spacing.md}px * 2)`,
-                listStylePosition: 'outside',
-              },
+  '& h1': {
+    fontSize: '$7',
+    marginBottom: '$3',
+  },
 
-              '& h1': {
-                fontSize: theme.headings.sizes.h1.fontSize,
-                marginBottom: `calc(${theme.spacing.sm}px * ${theme.headings.sizes.h1.lineHeight})`,
-              },
+  '& h2': {
+    fontSize: '$6',
+    marginBottom: '$3',
+  },
 
-              '& h2': {
-                fontSize: theme.headings.sizes.h2.fontSize,
-                marginBottom: `calc(${theme.spacing.sm}px * ${theme.headings.sizes.h2.lineHeight})`,
-              },
+  '& h3': {
+    fontSize: '$5',
+    marginBottom: '$3',
+  },
 
-              '& h3': {
-                fontSize: theme.headings.sizes.h3.fontSize,
-                marginBottom: `calc(${theme.spacing.sm}px * ${theme.headings.sizes.h3.lineHeight})`,
-              },
+  '& h4': {
+    fontSize: '$4',
+    marginBottom: '$3',
+  },
 
-              '& h4': {
-                fontSize: theme.headings.sizes.h4.fontSize,
-                marginBottom: `calc(${theme.spacing.sm}px * ${theme.headings.sizes.h4.lineHeight})`,
-              },
+  '& h5': {
+    fontSize: '$3',
+    marginBottom: '$3',
+  },
 
-              '& h5': {
-                fontSize: theme.headings.sizes.h5.fontSize,
-                marginBottom: `calc(${theme.spacing.sm}px * ${theme.headings.sizes.h5.lineHeight})`,
-              },
+  '& h6': {
+    fontSize: '$2',
+    marginBottom: '$3',
+  },
 
-              '& h6': {
-                fontSize: theme.headings.sizes.h6.fontSize,
-                marginBottom: `calc(${theme.spacing.sm}px * ${theme.headings.sizes.h6.lineHeight})`,
-              },
+  '& p': {
+    marginTop: 0,
+    marginBottom: '$2',
+  },
 
-              '& p': {
-                marginTop: 0,
-                marginBottom: theme.spacing.sm,
-              },
+  '& pre': {
+    lineHeight: '$1',
+    borderRadius: '$0',
+    color: 'var(--laodeaksar-colors-body)',
+    backgroundColor: 'var(--laodeaksar-colors-body)',
+    fontFamily: '$mono',
+    fontSize: '$1',
+    padding: '$1',
+    margin: 0,
+    overflowX: 'auto',
+  },
 
-              '& pre': {
-                ...theme.fn.fontStyles(),
-                lineHeight: theme.lineHeight,
-                borderRadius: theme.radius.sm,
-                color:
-                  theme.colorScheme === 'dark'
-                    ? theme.colors.dark[0]
-                    : theme.black,
-                backgroundColor: theme.fn.rgba(
-                  theme.fn.themeColor(
-                    'gray',
-                    theme.colorScheme === 'dark' ? 8 : 0
-                  ),
-                  theme.colorScheme === 'dark' ? 0.35 : 1
-                ),
-                fontFamily: theme.fontFamilyMonospace,
-                fontSize: theme.fontSizes.xs,
-                padding: theme.spacing.xs,
-                margin: 0,
-                overflowX: 'auto',
-              },
+  '& code': {
+    lineHeight: '$2',
+    borderRadius: '$1',
+    color: 'var(--laodeaksar-colors-body)',
+    backgroundColor: 'var(--laodeaksar-colors-body)',
+    fontFamily: '$mono',
+    fontSize: '$1',
+    padding: `2px $3`,
+  },
 
-              '& code': {
-                ...theme.fn.fontStyles(),
-                lineHeight: theme.lineHeight,
-                borderRadius: theme.radius.sm,
-                color:
-                  theme.colorScheme === 'dark'
-                    ? theme.colors.dark[0]
-                    : theme.black,
-                backgroundColor: theme.fn.rgba(
-                  theme.fn.themeColor(
-                    'gray',
-                    theme.colorScheme === 'dark' ? 8 : 0
-                  ),
-                  theme.colorScheme === 'dark' ? 0.35 : 1
-                ),
-                fontFamily: theme.fontFamilyMonospace,
-                fontSize: theme.fontSizes.xs,
-                padding: `2px calc(${theme.spacing.xs}px / 2)`,
-              },
+  '& blockquote': {
+    marginTop: 0,
+    marginLeft: 0,
+    marginBottom: '$2',
+    paddingLeft: '$2',
+    color: 'var(--laodeaksar-colors-body)',
+    borderLeft: `4px solid var(--laodeaksar-colors-body)`,
+  },
 
-              '& blockquote': {
-                marginTop: 0,
-                marginLeft: 0,
-                marginBottom: theme.spacing.sm,
-                paddingLeft: theme.spacing.md,
-                color:
-                  theme.colorScheme === 'dark'
-                    ? theme.colors.dark[2]
-                    : theme.colors.gray[7],
-                borderLeft: `4px solid ${
-                  theme.colorScheme === 'dark'
-                    ? theme.colors.dark[4]
-                    : theme.colors.gray[4]
-                }`,
-              },
+  '& img': {
+    display: 'block',
+    position: 'relative',
+    maxWidth: '100%',
+    marginBottom: '$2',
+  },
 
-              '& img': {
-                display: 'block',
-                position: 'relative',
-                maxWidth: '100%',
-                marginBottom: theme.spacing.sm,
-              },
+  '& .ql-image-uploading img': {
+    filter: 'blur(10px)',
+  },
 
-              '& .ql-image-uploading img': {
-                filter: 'blur(10px)',
-              },
-
-              '& .ql-blank': {
-                '&::before': {
-                  content: 'attr(data-placeholder)',
-                  position: 'absolute',
-                  left: theme.spacing.md,
-                  right: theme.spacing.md,
-                  color:
-                    theme.colorScheme === 'dark'
-                      ? theme.colors.dark[3]
-                      : theme.colors.gray[5],
-                },
-              },
-            },
-          })
-        );
+  '& .ql-blank': {
+    '&::before': {
+      content: 'attr(data-placeholder)',
+      position: 'absolute',
+      left: '$space$4',
+      right: '$space$4',
+      color: 'var(--laodeaksar-colors-body)',
+    },
+  },
+});

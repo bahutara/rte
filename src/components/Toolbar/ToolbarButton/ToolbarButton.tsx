@@ -1,3 +1,4 @@
+import { CSS } from '@laodeaksarr/design-system';
 import React from 'react';
 import { StyledToolbarButton } from './TollbarButton.styles';
 
@@ -15,6 +16,7 @@ interface ToolbarButtonProps {
   noActive?: boolean;
 
   title?: string;
+  css?: CSS
 }
 
 export function ToolbarButton({ children, ...others }: ToolbarButtonProps) {

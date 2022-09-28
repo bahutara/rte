@@ -1,48 +1,47 @@
-export default createStyles(
-  (theme, { sticky, stickyOffset }: ToolbarStyles) => ({
+import { styled } from '@laodeaksarr/design-system';
+
+export const StyledToolbar = styled('button', {
+  variants: {
     toolbarGroup: {
-      display: 'flex',
-      alignItems: 'center',
-      flexWrap: 'wrap',
-      margin: `calc(${theme.spacing.md}px / 2)`,
+      true: {
+        display: 'flex',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        margin: `$2`,
+      },
     },
 
     toolbar: {
-      position: sticky ? 'sticky' : 'relative',
-      zIndex: 1,
-      top: sticky ? stickyOffset : 0,
-      backgroundColor:
-        theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
-      borderBottom: `1px solid ${
-        theme.colorScheme === 'dark'
-          ? theme.colors.dark[7]
-          : theme.colors.gray[4]
-      }`,
-      borderTopRightRadius: theme.radius.sm,
-      borderTopLeftRadius: theme.radius.sm,
-      padding: `${theme.spacing.sm}px ${theme.spacing.md}px`,
+      true: {
+        zIndex: 1,
+        backgroundColor: 'var(--laodeaksar-color-foreground)',
+        borderBottom: `1px solid var(--laodeaksar-colors-body)`,
+        btr: '$2',
+        padding: `$2 $3`,
+      },
     },
 
     toolbarInner: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      margin: `calc(${-theme.spacing.md}px / 2)`,
-    },
-
-    toolbarControl: {
-      '& + &': {
-        borderLeftWidth: 0,
-      },
-
-      '&:first-of-type': {
-        borderTopLeftRadius: theme.radius.sm,
-        borderBottomLeftRadius: theme.radius.sm,
-      },
-
-      '&:last-of-type': {
-        borderTopRightRadius: theme.radius.sm,
-        borderBottomRightRadius: theme.radius.sm,
+      true: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        margin: '-$2',
       },
     },
-  })
-);
+    sticky: {
+      true: {
+        $$stickyOffset: 0,
+
+        position: 'sticky',
+        top: '$$stickyOffset',
+      },
+      false: {
+        position: 'relative',
+        top: '$$stickyOffset',
+      },
+    },
+  },
+  defaultVariants: {
+    sticky: true,
+  },
+});
