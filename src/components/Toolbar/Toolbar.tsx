@@ -1,6 +1,5 @@
 import React from "react";
 import type { RichTextEditorLabels } from "../RichTextEditor/default-labels";
-import { ToolbarButton } from "./ToolbarButton/ToolbarButton";
 import { CONTROLS, ToolbarControl } from "./controls";
 import * as Styled from "./Toolbar.styles";
 
