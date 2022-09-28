@@ -2,7 +2,7 @@ import Editor, { Quill } from 'react-quill';
 
 import { RichTextEditor } from './components/RichTextEditor/RichTextEditor';
 
-export { RichTextEditor, DEFAULT_CONTROLS, DEFAULT_LABELS, Quill, Editor };
+export { RichTextEditor, Quill, Editor };
 export default RichTextEditor;
 
 export { Toolbar } from './components/Toolbar/Toolbar';
