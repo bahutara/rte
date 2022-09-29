@@ -8,7 +8,8 @@ import { createImageBlot, ImageUploader } from "../../modules/image-uploader";
 import { replaceIcons } from "../../modules/icons";
 import { StyledRichTextEditor } from "./RichTextEditor.styles";
 import { ToolbarControl } from "../Toolbar/controls";
-import { RichTextEditorLabels } from "./default-labels";
+import { DEFAULT_LABELS, RichTextEditorLabels } from './default-labels';
+import { DEFAULT_CONTROLS } from "./default-control";
 
 const InlineBlot = Quill.import("blots/block");
 const ImageBlot = createImageBlot(InlineBlot);
@@ -36,11 +37,13 @@ export interface RichTextEditorProps {
     sources: Sources,
     editor: Editor.UnprivilegedEditor
   ): void;
+  onImageUpload?(image: File): Promise<string>;
   controls?: ToolbarControl[][];
   labels?: RichTextEditorLabels;
   mentions?: Record<string, any>;
   modules?: Record<string, any>;
   formats?: string[];
+  readOnly?: boolean
 }
 
 export const RichTextEditor = (props: RichTextEditorProps) => {
@@ -49,11 +52,13 @@ export const RichTextEditor = (props: RichTextEditorProps) => {
     value,
     defaultValue,
     onChange,
-    controls,
-    labels,
+    controls= DEFAULT_CONTROLS,
+    labels= DEFAULT_LABELS,
     mentions,
+    onImageUpload = defaultImageUpload,
     modules: externalModules,
     formats,
+    readOnly = false,
     ...others
   } = props;
 
@@ -62,18 +67,23 @@ export const RichTextEditor = (props: RichTextEditorProps) => {
   const modules = React.useMemo(
     () => ({
       ...externalModules,
-      ...(uuid ? { toolbar: { container: `#${uuid}` } } : undefined),
+      ...(uuid ? { toolbar: `#${uuid}` } : undefined),
       mention: mentions,
       imageUploader: {
-        upload: (file: File) => defaultImageUpload(file),
+        upload: (file: File) => onImageUpload(file),
       },
     }),
-    [uuid, mentions, externalModules]
+    [uuid, mentions, externalModules, onImageUpload]
   );
 
   return (
     <StyledRichTextEditor {...others}>
-      <Toolbar controls={controls} labels={labels} id={uuid} />
+      <Toolbar 
+        readOnly={readOnly}
+        controls={controls} 
+        labels={labels} 
+        id={uuid} 
+      />
 
       <Editor
         theme="snow"
