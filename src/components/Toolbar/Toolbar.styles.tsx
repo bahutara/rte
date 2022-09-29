@@ -21,9 +21,15 @@ export const Toolbar = styled("button", {
         top: "$$stickyOffset",
       },
     },
+    readOnly: {
+      true: {
+        display: 'none'
+      }
+    }
   },
   defaultVariants: {
     sticky: true,
+    readOnly: false
   },
 });
 
