@@ -1,4 +1,4 @@
-import { css, styled } from "@laodeaksarr/design-system";
+import { css, styled } from "@bahutara/design-system";
 
 export const Toolbar = styled("button", {
   zIndex: 1,

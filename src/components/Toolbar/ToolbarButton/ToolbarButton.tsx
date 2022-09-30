@@ -1,4 +1,4 @@
-import { CSS } from '@laodeaksarr/design-system';
+import { CSS } from '@bahutara/design-system';
 import React from 'react';
 import { StyledToolbarButton } from './TollbarButton.styles';
 
