@@ -70,7 +70,6 @@
     "@editorjs/header": "^2.6.2",
     "@editorjs/list": "^1.7.0",
     "@laodeaksarr/design-system": "^1.1.1",
-    "@mantine/hooks": "^5.4.1",
     "@tabler/icons": "^1.101.0",
     "editorjs-style": "^3.0.3",
     "editorjs-tooltip": "^1.1.8",

@@ -1,22 +1,21 @@
-import React from "react";
-import Editor, { Quill } from "react-quill";
-import type { Delta, Sources } from "quill";
-import "quill-mention";
-import { useId } from "@mantine/hooks";
-import { Toolbar } from "../Toolbar/Toolbar";
-import { createImageBlot, ImageUploader } from "../../modules/image-uploader";
-import { replaceIcons } from "../../modules/icons";
-import { StyledRichTextEditor } from "./RichTextEditor.styles";
-import { ToolbarControl } from "../Toolbar/controls";
+import React from 'react';
+import Editor, { Quill } from 'react-quill';
+import type { Delta, Sources } from 'quill';
+import 'quill-mention';
+import { Toolbar } from '../Toolbar/Toolbar';
+import { createImageBlot, ImageUploader } from '../../modules/image-uploader';
+import { replaceIcons } from '../../modules/icons';
+import { StyledRichTextEditor } from './RichTextEditor.styles';
+import { ToolbarControl } from '../Toolbar/controls';
 import { DEFAULT_LABELS, RichTextEditorLabels } from './default-labels';
-import { DEFAULT_CONTROLS } from "./default-control";
+import { DEFAULT_CONTROLS } from './default-control';
 
-const InlineBlot = Quill.import("blots/block");
+const InlineBlot = Quill.import('blots/block');
 const ImageBlot = createImageBlot(InlineBlot);
-Quill.register({ "formats/imageBlot": ImageBlot });
-Quill.register("modules/imageUploader", ImageUploader);
+Quill.register({ 'formats/imageBlot': ImageBlot });
+Quill.register('modules/imageUploader', ImageUploader);
 
-const icons = Quill.import("ui/icons");
+const icons = Quill.import('ui/icons');
 replaceIcons(icons);
 
 function defaultImageUpload(file: File): Promise<string> {
@@ -28,7 +27,6 @@ function defaultImageUpload(file: File): Promise<string> {
 }
 
 export interface RichTextEditorProps {
-  id?: any;
   value?: string | Delta;
   defaultValue?: string | Delta;
   onChange?(
@@ -43,17 +41,16 @@ export interface RichTextEditorProps {
   mentions?: Record<string, any>;
   modules?: Record<string, any>;
   formats?: string[];
-  readOnly?: boolean
+  readOnly?: boolean;
 }
 
 export const RichTextEditor = (props: RichTextEditorProps) => {
   const {
-    id,
     value,
     defaultValue,
     onChange,
-    controls= DEFAULT_CONTROLS,
-    labels= DEFAULT_LABELS,
+    controls = DEFAULT_CONTROLS,
+    labels = DEFAULT_LABELS,
     mentions,
     onImageUpload = defaultImageUpload,
     modules: externalModules,
@@ -62,27 +59,25 @@ export const RichTextEditor = (props: RichTextEditorProps) => {
     ...others
   } = props;
 
-  const uuid = useId(id);
-
   const modules = React.useMemo(
     () => ({
       ...externalModules,
-      ...(uuid ? { toolbar: `#${uuid}` } : undefined),
+      ...{ toolbar: `#toolbar` },
       mention: mentions,
       imageUploader: {
         upload: (file: File) => onImageUpload(file),
       },
     }),
-    [uuid, mentions, externalModules, onImageUpload]
+    [mentions, externalModules, onImageUpload]
   );
 
   return (
     <StyledRichTextEditor {...others}>
-      <Toolbar 
+      <Toolbar
         readOnly={readOnly}
-        controls={controls} 
-        labels={labels} 
-        id={uuid} 
+        controls={controls}
+        labels={labels}
+        id="toolbar"
       />
 
       <Editor
@@ -96,4 +91,4 @@ export const RichTextEditor = (props: RichTextEditorProps) => {
       />
     </StyledRichTextEditor>
   );
-}
+};
