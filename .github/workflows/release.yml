@@ -75,7 +75,7 @@ jobs:
         with:
           delete-branch: true
           reviewers: |
-            laodeaksarr
+            bahutara
           title: Bump package.json to version ${{steps.get-version.outputs.result}}
           commit-message: Bump package.json to version ${{steps.get-version.outputs.result}}
       - name: Publish
