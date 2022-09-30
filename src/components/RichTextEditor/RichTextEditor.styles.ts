@@ -8,12 +8,12 @@ export const StyledRichTextEditor = styled(Box, {
   position: 'relative',
   color: 'var(--laodeaksar-colors-typeface-primary)',
 
-  '& .ql-toolbar': {
+  '.ql-toolbar': {
     borderTopRightRadius: '$2',
     borderTopLeftRadius: '$2',
   },
 
-  '& .ql-container': {
+  '.ql-container': {
     position: 'relative',
     boxSizing: 'border-box',
     height: '100%',
@@ -202,48 +202,48 @@ export const StyledRichTextEditor = styled(Box, {
     marginTop: 0,
   },
 
-  '& ol, & ul': {
+  '&ol, &ul': {
     marginTop: '$2',
     paddingLeft: `$3`,
     listStylePosition: 'outside',
   },
 
-  '& h1': {
+  '&h1': {
     fontSize: '$7',
     marginBottom: '$3',
   },
 
-  '& h2': {
+  '&h2': {
     fontSize: '$6',
     marginBottom: '$3',
   },
 
-  '& h3': {
+  '&h3': {
     fontSize: '$5',
     marginBottom: '$3',
   },
 
-  '& h4': {
+  '&h4': {
     fontSize: '$4',
     marginBottom: '$3',
   },
 
-  '& h5': {
+  '&h5': {
     fontSize: '$3',
     marginBottom: '$3',
   },
 
-  '& h6': {
+  '&h6': {
     fontSize: '$2',
     marginBottom: '$3',
   },
 
-  '& p': {
+  '&p': {
     marginTop: 0,
     marginBottom: '$2',
   },
 
-  '& pre': {
+  '&pre': {
     lineHeight: '$1',
     borderRadius: '$0',
     color: 'var(--laodeaksar-colors-body)',
@@ -255,7 +255,7 @@ export const StyledRichTextEditor = styled(Box, {
     overflowX: 'auto',
   },
 
-  '& code': {
+  '&code': {
     lineHeight: '$2',
     borderRadius: '$1',
     color: 'var(--laodeaksar-colors-body)',
@@ -265,7 +265,7 @@ export const StyledRichTextEditor = styled(Box, {
     padding: `2px $3`,
   },
 
-  '& blockquote': {
+  '&blockquote': {
     marginTop: 0,
     marginLeft: 0,
     marginBottom: '$2',
@@ -274,18 +274,18 @@ export const StyledRichTextEditor = styled(Box, {
     borderLeft: `4px solid var(--laodeaksar-colors-body)`,
   },
 
-  '& img': {
+  '&img': {
     display: 'block',
     position: 'relative',
     maxWidth: '100%',
     marginBottom: '$2',
   },
 
-  '& .ql-image-uploading img': {
+  '&.ql-image-uploading img': {
     filter: 'blur(10px)',
   },
 
-  '& .ql-blank': {
+  '&.ql-blank': {
     '&::before': {
       content: 'attr(data-placeholder)',
       position: 'absolute',

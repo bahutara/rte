@@ -65,10 +65,9 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "@bahutara/design-system": "^1.1.1",
+    "@bahutara/design-system": "^0.0.2",
     "@tabler/icons": "^1.101.0",
     "framer-motion": "^7.4.0",
-    "lodash": "^4.17.21",
     "quill-mention": "^3.1.0",
     "react-quill": "^2.0.0"
   }
