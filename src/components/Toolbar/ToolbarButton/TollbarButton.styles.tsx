@@ -5,7 +5,7 @@ export const StyledToolbarButton = styled('button', {
   border: `1px solid var(--laodeaksar-colors-body)`,
   color: 'var(--laodeaksar-colors-foreground)',
 
-  variant: {
+  variants: {
     noActive: {
       false: {
         '&.ql-active': {

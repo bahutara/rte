@@ -8,16 +8,18 @@ interface ToolbarButtonProps {
   value?: string;
   title?: string;
   css?: CSS;
+  className?: string;
 }
 
 export function ToolbarButton({
   children,
   controls,
   value,
+  className,
   ...others
 }: ToolbarButtonProps) {
   return (
-    <StyledToolbarButton className={`ql-${controls}`} value={value} {...others}>
+    <StyledToolbarButton className={`ql-${controls} ${className}`} value={value} {...others}>
       {children}
     </StyledToolbarButton>
   );

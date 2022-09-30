@@ -1,5 +1,4 @@
-import { styled } from "@laodeaksarr/design-system";
-import { ToolbarButton } from "./ToolbarButton/ToolbarButton";
+import { css, styled } from "@laodeaksarr/design-system";
 
 export const Toolbar = styled("button", {
   zIndex: 1,
@@ -46,7 +45,7 @@ export const ToolbarGroup = styled("div", {
   margin: `$2`,
 });
 
-export const ToolbarControl = styled(ToolbarButton, {
+export const toolbar = css({
   "& + &": {
     borderLeftWidth: 0,
   },
@@ -60,4 +59,4 @@ export const ToolbarControl = styled(ToolbarButton, {
     borderTopRightRadius: "$1",
     borderBottomRightRadius: "$1",
   },
-});
+})();
