@@ -21,17 +21,17 @@ export const StyledRichTextEditor = styled(Box, {
     lineHeight: '$loose',
   },
 
-  '& .ql-editor': {
+  '.ql-editor': {
     whiteSpace: 'pre-wrap',
     outline: 'none',
     padding: `$2 $3`,
   },
 
-  '& .ql-container.ql-disabled .ql-tooltip': {
+  '.ql-container.ql-disabled .ql-tooltip': {
     display: 'none',
   },
 
-  '& .ql-tooltip': {
+  '.ql-tooltip': {
     position: 'absolute',
     zIndex: 1,
     backgroundColor: 'var(--laodeaksar-colors-body)',
@@ -43,7 +43,7 @@ export const StyledRichTextEditor = styled(Box, {
     alignItems: 'center',
   },
 
-  '& .ql-action::before': {
+  '.ql-action::before': {
     content: `"Edit"`,
     cursor: 'pointer',
     display: 'block',
@@ -58,7 +58,7 @@ export const StyledRichTextEditor = styled(Box, {
     fontSize: '$2',
   },
 
-  '& .ql-remove::before': {
+  '.ql-remove::before': {
     content: `"Remove"`,
     cursor: 'pointer',
     color: 'var(--laodeaksar-colors-body)',
@@ -68,11 +68,11 @@ export const StyledRichTextEditor = styled(Box, {
     lineHeight: '32px',
   },
 
-  '& .ql-hidden': {
+  '.ql-hidden': {
     display: 'none',
   },
 
-  '& .ql-preview': {
+  '.ql-preview': {
     display: 'inline-block',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
@@ -81,24 +81,24 @@ export const StyledRichTextEditor = styled(Box, {
     marginRight: '$2',
   },
 
-  '& .ql-editing .ql-preview': {
+  '.ql-editing .ql-preview': {
     display: 'none',
   },
 
-  '& .ql-editing .ql-remove': {
+  '.ql-editing .ql-remove': {
     display: 'none',
   },
 
-  '& .ql-editing .ql-action::before': {
+  '.ql-editing .ql-action::before': {
     content: `"Save"`,
     marginRight: 0,
   },
 
-  '& .ql-tooltip.ql-editing input': {
+  '.ql-tooltip.ql-editing input': {
     display: 'block',
   },
 
-  '& .ql-tooltip input': {
+  '.ql-tooltip input': {
     display: 'none',
     WebkitTapHighlightColor: 'transparent',
     height: 34,
@@ -128,7 +128,7 @@ export const StyledRichTextEditor = styled(Box, {
     },
   },
 
-  '& .ql-clipboard': {
+  '.ql-clipboard': {
     left: '-100000px',
     height: '1px',
     overflowY: 'hidden',
@@ -136,34 +136,34 @@ export const StyledRichTextEditor = styled(Box, {
     top: '50%',
   },
 
-  '& .ql-align-center': {
+  '.ql-align-center': {
     textAlign: 'center',
   },
 
-  '& .ql-align-right': {
+  '.ql-align-right': {
     textAlign: 'right',
   },
 
-  '& .ql-mention-list-container': {
+  '.ql-mention-list-container': {
     border: `1px solid var(--laodeaksar-colors-body)`,
     backgroundColor: 'var(--laodeaksar-colors-body)',
     borderRadius: '$1',
     overflow: 'hidden',
 
-    '& .ql-mention-list': {
+    '.ql-mention-list': {
       color: 'var(--laodeaksar-colors-body)',
       paddingLeft: 0,
       marginTop: 0,
       margin: 0,
       listStyleType: 'none',
 
-      '& .ql-mention-list-item': {
+      '.ql-mention-list-item': {
         padding: '$2',
         textDecoration: 'none',
         cursor: 'pointer',
       },
 
-      '& .selected': {
+      '.selected': {
         backgroundColor: 'var(--laodeaksar-colors-body)',
         color: 'var(--laodeaksar-colors-body)',
         textDecoration: 'none',
@@ -171,7 +171,7 @@ export const StyledRichTextEditor = styled(Box, {
     },
   },
 
-  '& .mention': {
+  '.mention': {
     display: 'inline-block',
     color: 'var(--laodeaksar-colors-body)',
     backgroundColor: 'var(--laodeaksar-colors-body)',
@@ -182,7 +182,7 @@ export const StyledRichTextEditor = styled(Box, {
     pointerEvents: 'none',
   },
 
-  '& iframe.ql-video': {
+  'iframe.ql-video': {
     width: '100%',
     height: 400,
 
@@ -191,59 +191,59 @@ export const StyledRichTextEditor = styled(Box, {
     },
   },
 
-  '& a': {
+  'a': {
     color: 'var(--laodeaksar-colors-body)',
     textDecoration: 'none',
   },
 
-  '& h1, & h2, & h3, & h4, & h5, & h6': {
+  'h1, h2, h3, h4, h5, h6': {
     fontFamily: '$display',
     fontWeight: '$2',
     marginTop: 0,
   },
 
-  '&ol, &ul': {
+  'ol, ul': {
     marginTop: '$2',
     paddingLeft: `$3`,
     listStylePosition: 'outside',
   },
 
-  '&h1': {
+  'h1': {
     fontSize: '$7',
     marginBottom: '$3',
   },
 
-  '&h2': {
+  'h2': {
     fontSize: '$6',
     marginBottom: '$3',
   },
 
-  '&h3': {
+  'h3': {
     fontSize: '$5',
     marginBottom: '$3',
   },
 
-  '&h4': {
+  'h4': {
     fontSize: '$4',
     marginBottom: '$3',
   },
 
-  '&h5': {
+  'h5': {
     fontSize: '$3',
     marginBottom: '$3',
   },
 
-  '&h6': {
+  'h6': {
     fontSize: '$2',
     marginBottom: '$3',
   },
 
-  '&p': {
+  'p': {
     marginTop: 0,
     marginBottom: '$2',
   },
 
-  '&pre': {
+  'pre': {
     lineHeight: '$1',
     borderRadius: '$0',
     color: 'var(--laodeaksar-colors-body)',
@@ -255,17 +255,17 @@ export const StyledRichTextEditor = styled(Box, {
     overflowX: 'auto',
   },
 
-  '&code': {
+  'code': {
     lineHeight: '$2',
     borderRadius: '$1',
     color: 'var(--laodeaksar-colors-body)',
-    backgroundColor: 'var(--laodeaksar-colors-body)',
+    backgroundColor: 'var(--laodeaksar-colors-typeface-primary)',
     fontFamily: '$mono',
     fontSize: '$1',
     padding: `2px $3`,
   },
 
-  '&blockquote': {
+  'blockquote': {
     marginTop: 0,
     marginLeft: 0,
     marginBottom: '$2',
@@ -274,18 +274,18 @@ export const StyledRichTextEditor = styled(Box, {
     borderLeft: `4px solid var(--laodeaksar-colors-body)`,
   },
 
-  '&img': {
+  'img': {
     display: 'block',
     position: 'relative',
     maxWidth: '100%',
     marginBottom: '$2',
   },
 
-  '&.ql-image-uploading img': {
+  '.ql-image-uploading img': {
     filter: 'blur(10px)',
   },
 
-  '&.ql-blank': {
+  '.ql-blank': {
     '&::before': {
       content: 'attr(data-placeholder)',
       position: 'absolute',
