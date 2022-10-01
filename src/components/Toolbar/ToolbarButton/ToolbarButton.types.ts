@@ -9,4 +9,3 @@ export interface ToolbarButtonProps {
   css?: CSS;
   className?: string;
 }
-  

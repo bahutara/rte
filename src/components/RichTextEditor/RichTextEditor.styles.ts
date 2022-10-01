@@ -1,4 +1,4 @@
-import { Box /*, Shadows*/ , styled } from '@bahutara/design-system';
+import { Box /*, Shadows*/, styled } from '@bahutara/design-system';
 
 export const StyledRichTextEditor = styled(Box, {
   fontSize: '$1',
