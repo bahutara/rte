@@ -9,6 +9,8 @@ import { StyledRichTextEditor } from './RichTextEditor.styles';
 import { ToolbarControl } from '../Toolbar/controls';
 import { DEFAULT_LABELS, RichTextEditorLabels } from './default-labels';
 import { DEFAULT_CONTROLS } from './default-control';
+import { attachShortcuts } from '../../modules/shortcuts';
+import { mergeRefs } from '../../modules/useMergeRef';
 
 const InlineBlot = Quill.import('blots/block');
 const ImageBlot = createImageBlot(InlineBlot);
@@ -44,51 +46,62 @@ export interface RichTextEditorProps {
   readOnly?: boolean;
 }
 
-export const RichTextEditor = (props: RichTextEditorProps) => {
-  const {
-    value,
-    defaultValue,
-    onChange,
-    controls = DEFAULT_CONTROLS,
-    labels = DEFAULT_LABELS,
-    mentions,
-    onImageUpload = defaultImageUpload,
-    modules: externalModules,
-    formats,
-    readOnly = false,
-    ...others
-  } = props;
+export const RichTextEditor = React.forwardRef<Editor, RichTextEditorProps>(
+  (props: RichTextEditorProps, ref) => {
+    const {
+      value,
+      defaultValue,
+      onChange,
+      controls = DEFAULT_CONTROLS,
+      labels = DEFAULT_LABELS,
+      mentions,
+      onImageUpload = defaultImageUpload,
+      modules: externalModules,
+      formats,
+      readOnly = false,
+      ...others
+    } = props;
 
-  const modules = React.useMemo(
-    () => ({
-      ...externalModules,
-      ...{ toolbar: `#toolbar` },
-      mention: mentions,
-      imageUploader: {
-        upload: (file: File) => onImageUpload(file),
-      },
-    }),
-    [mentions, externalModules, onImageUpload]
-  );
+    const editorRef = React.useRef<Editor>();
 
-  return (
-    <StyledRichTextEditor {...others}>
-      <Toolbar
-        readOnly={readOnly}
-        controls={controls}
-        labels={labels}
-        id="toolbar"
-      />
+    const modules = React.useMemo(
+      () => ({
+        ...externalModules,
+        ...{ toolbar: `#toolbar` },
+        mention: mentions,
+        imageUploader: {
+          upload: (file: File) => onImageUpload(file),
+        },
+      }),
+      [mentions, externalModules, onImageUpload]
+    );
 
-      <Editor
-        theme="snow"
-        modules={modules}
-        value={value}
-        defaultValue={defaultValue}
-        onChange={onChange}
-        scrollingContainer="html"
-        formats={formats}
-      />
-    </StyledRichTextEditor>
-  );
-};
+    React.useEffect(() => {
+      if (editorRef.current) {
+        attachShortcuts(editorRef?.current?.editor?.keyboard);
+      }
+    }, []);
+
+    return (
+      <StyledRichTextEditor {...others}>
+        <Toolbar
+          readOnly={readOnly}
+          controls={controls}
+          labels={labels}
+          id="toolbar"
+        />
+
+        <Editor
+          theme="snow"
+          modules={modules}
+          value={value}
+          ref={mergeRefs([editorRef, ref])}
+          defaultValue={defaultValue}
+          onChange={onChange}
+          scrollingContainer="html"
+          formats={formats}
+        />
+      </StyledRichTextEditor>
+    );
+  }
+);

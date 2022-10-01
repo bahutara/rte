@@ -20,8 +20,8 @@
     "analyze": "size-limit --why"
   },
   "peerDependencies": {
-    "react": ">=16",
-    "@bahutara/design-system": "*"
+    "@bahutara/design-system": "*",
+    "react": ">=16"
   },
   "husky": {
     "hooks": {
