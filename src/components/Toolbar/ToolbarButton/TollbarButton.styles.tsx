@@ -1,7 +1,7 @@
-import { styled } from '@bahutara/design-system';
+import { css } from '@bahutara/design-system';
 
-export const StyledToolbarButton = styled('button', {
-  backgroundColor: 'var(--laodeaksar-colors-foreground)',
+export const styles = css({
+  backgroundColor: 'var(--laodeaksar-colors-brand)',
   border: `1px solid var(--laodeaksar-form-input-border)`,
   color: 'var(--laodeaksar-colors-typeface-primary)',
 
@@ -15,4 +15,4 @@ export const StyledToolbarButton = styled('button', {
       },
     },
   },
-});
+})();

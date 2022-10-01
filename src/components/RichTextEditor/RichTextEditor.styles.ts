@@ -27,7 +27,7 @@ export const StyledRichTextEditor = styled(Box, {
     padding: `$1 $2`,
   },
 
-  '.ql-container.ql-disabled .ql-tooltip': {
+  /*'.ql-container.ql-disabled .ql-tooltip': {
     display: 'none',
   },
 
@@ -293,5 +293,5 @@ export const StyledRichTextEditor = styled(Box, {
       right: '$space$1',
       color: 'var(--laodeaksar-colors-typeface-primary)',
     },
-  },
+  },*/
 });

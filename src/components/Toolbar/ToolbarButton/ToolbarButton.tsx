@@ -1,26 +1,12 @@
-import { CSS } from '@bahutara/design-system';
-import React from 'react';
-import { StyledToolbarButton } from './TollbarButton.styles';
+import { styles } from './TollbarButton.styles';
+import type { ToolbarButtonProps } from './TollbarButton.types';
 
-interface ToolbarButtonProps {
-  children: React.ReactNode;
-  controls?: string;
-  value?: string;
-  title?: string;
-  css?: CSS;
-  className?: string;
-}
-
-export function ToolbarButton({
-  children,
-  controls,
-  value,
-  className,
-  ...others
-}: ToolbarButtonProps) {
+export function ToolbarButton(props: ToolbarButtonProps) {
+  const { children, controls, value, className, ...rest} = props
+  
   return (
-    <StyledToolbarButton className={`ql-${controls} ${className}`} value={value} {...others}>
+    <button className={`${styles} ql-${controls} ${className}`} value={value} {...rest}>
       {children}
-    </StyledToolbarButton>
+    </button>
   );
 }

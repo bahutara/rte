@@ -1,24 +1,12 @@
-import { CSS } from '@bahutara/design-system';
 import React from 'react';
-import type { RichTextEditorLabels } from '../RichTextEditor/default-labels';
-import { CONTROLS, ToolbarControl } from './controls';
+import { CONTROLS } from './controls';
 import * as Styled from './Toolbar.styles';
+import type { ToolbarProps } from './Toolbar.types';
 import { ToolbarButton } from './ToolbarButton/ToolbarButton';
 
-export interface ToolbarProps {
-  controls?: ToolbarControl[][];
-  labels?: RichTextEditorLabels;
-  id?: string;
-  css?: CSS;
-  readOnly?: boolean;
-}
-
-export function Toolbar({
-  controls,
-  labels,
-  readOnly,
-  ...others
-}: ToolbarProps) {
+export function Toolbar(props: ToolbarProps) {
+  const { controls, labels, readOnly, ...rest } = props
+  
   const groups = controls?.map((group, index) => {
     const items = group
       .filter((item) => CONTROLS[item])
@@ -42,7 +30,7 @@ export function Toolbar({
   });
 
   return (
-    <Styled.Toolbar readOnly={readOnly} {...others}>
+    <Styled.Toolbar readOnly={readOnly} {...rest}>
       <Styled.ToolbarInner>{groups}</Styled.ToolbarInner>
     </Styled.Toolbar>
   );

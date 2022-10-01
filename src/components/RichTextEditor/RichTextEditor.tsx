@@ -1,16 +1,15 @@
 import React from 'react';
 import Editor, { Quill } from 'react-quill';
-import type { Delta, Sources } from 'quill';
 import 'quill-mention';
 import { Toolbar } from '../Toolbar/Toolbar';
 import { createImageBlot, ImageUploader } from '../../modules/image-uploader';
 import { replaceIcons } from '../../modules/icons';
 import { StyledRichTextEditor } from './RichTextEditor.styles';
-import { ToolbarControl } from '../Toolbar/controls';
-import { DEFAULT_LABELS, RichTextEditorLabels } from './default-labels';
+import { DEFAULT_LABELS } from './default-labels';
 import { DEFAULT_CONTROLS } from './default-control';
 import { attachShortcuts } from '../../modules/shortcuts';
 import { mergeRefs } from '../../modules/useMergeRef';
+import { RichTextEditorProps } from './RichTextEditor.types';
 
 const InlineBlot = Quill.import('blots/block');
 const ImageBlot = createImageBlot(InlineBlot);
@@ -26,24 +25,6 @@ function defaultImageUpload(file: File): Promise<string> {
     reader.onloadend = () => resolve(reader.result as string);
     reader.readAsDataURL(file);
   });
-}
-
-export interface RichTextEditorProps {
-  value?: string | Delta;
-  defaultValue?: string | Delta;
-  onChange?(
-    value: string,
-    delta: Delta,
-    sources: Sources,
-    editor: Editor.UnprivilegedEditor
-  ): void;
-  onImageUpload?(image: File): Promise<string>;
-  controls?: ToolbarControl[][];
-  labels?: RichTextEditorLabels;
-  mentions?: Record<string, any>;
-  modules?: Record<string, any>;
-  formats?: string[];
-  readOnly?: boolean;
 }
 
 export const RichTextEditor = React.forwardRef<Editor, RichTextEditorProps>(
