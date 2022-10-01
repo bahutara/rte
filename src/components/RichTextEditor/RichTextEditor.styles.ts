@@ -1,7 +1,7 @@
 import { Box, Shadows, styled } from '@bahutara/design-system';
 
 export const StyledRichTextEditor = styled(Box, {
-  fontSize: '$2',
+  fontSize: '$1',
   border: `1px solid var(--laodeaksar-form-input-border)`,
   backgroundColor: 'var(--laodeaksar-colors-foreground)',
   borderRadius: '$1',
@@ -9,8 +9,8 @@ export const StyledRichTextEditor = styled(Box, {
   color: 'var(--laodeaksar-colors-typeface-primary)',
 
   '.ql-toolbar': {
-    borderTopRightRadius: '$2',
-    borderTopLeftRadius: '$2',
+    borderTopRightRadius: '$1',
+    borderTopLeftRadius: '$1',
   },
 
   '.ql-container': {
@@ -24,7 +24,7 @@ export const StyledRichTextEditor = styled(Box, {
   '.ql-editor': {
     whiteSpace: 'pre-wrap',
     outline: 'none',
-    padding: `$2 $3`,
+    padding: `$1 $2`,
   },
 
   '.ql-container.ql-disabled .ql-tooltip': {
@@ -51,7 +51,7 @@ export const StyledRichTextEditor = styled(Box, {
     height: 32,
     lineHeight: '$relaxed',
     backgroundColor: 'var(--laodeaksar-colors-foreground)',
-    borderRadius: '$0',
+    borderRadius: '$1',
     fontWeight: 500,
     padding: `0 $4`,
     marginRight: '$2',
@@ -109,10 +109,10 @@ export const StyledRichTextEditor = styled(Box, {
     width: '100%',
     color: 'var(--laodeaksar-colors-typeface-primary)',
     textAlign: 'left',
-    paddingLeft: '$2',
+    paddingLeft: '$1',
     paddingRight: '$2',
-    borderRadius: '$2',
-    marginRight: '$3',
+    borderRadius: '$1',
+    marginRight: '$2',
     border: `1px solid var(--laodeaksar-form-input-border)`,
     backgroundColor: 'var(--laodeaksar-colors-foreground)',
 
@@ -158,7 +158,7 @@ export const StyledRichTextEditor = styled(Box, {
       listStyleType: 'none',
 
       '.ql-mention-list-item': {
-        padding: '$2',
+        padding: '$1',
         textDecoration: 'none',
         cursor: 'pointer',
       },
@@ -177,13 +177,13 @@ export const StyledRichTextEditor = styled(Box, {
     backgroundColor: 'var(--laodeaksar-colors-foreground)',
     padding: '3px 5px',
     marginRight: 2,
-    borderRadius: '$0',
+    borderRadius: '$1',
     userSelect: 'all',
     pointerEvents: 'none',
   },
 
   'iframe.ql-video': {
-    width: '100%',
+    width: '$full',
     height: 400,
 
     '@media (max-width: 755px)': {
@@ -204,38 +204,38 @@ export const StyledRichTextEditor = styled(Box, {
 
   'ol, ul': {
     marginTop: '$2',
-    paddingLeft: `$3`,
+    paddingLeft: `$1`,
     listStylePosition: 'outside',
   },
 
   h1: {
     fontSize: '$7',
-    marginBottom: '$3',
+    marginBottom: '$2',
   },
 
   h2: {
     fontSize: '$6',
-    marginBottom: '$3',
+    marginBottom: '$2',
   },
 
   h3: {
     fontSize: '$5',
-    marginBottom: '$3',
+    marginBottom: '$2',
   },
 
   h4: {
     fontSize: '$4',
-    marginBottom: '$3',
+    marginBottom: '$2',
   },
 
   h5: {
     fontSize: '$3',
-    marginBottom: '$3',
+    marginBottom: '$2',
   },
 
   h6: {
     fontSize: '$2',
-    marginBottom: '$3',
+    marginBottom: '$2',
   },
 
   p: {
@@ -244,8 +244,8 @@ export const StyledRichTextEditor = styled(Box, {
   },
 
   pre: {
-    lineHeight: '$1',
-    borderRadius: '$0',
+    lineHeight: '$normal',
+    borderRadius: '$1',
     color: 'var(--laodeaksar-colors-typeface-primary)',
     backgroundColor: 'var(--laodeaksar-colors-foregroumd)',
     fontFamily: '$mono',
@@ -256,13 +256,13 @@ export const StyledRichTextEditor = styled(Box, {
   },
 
   code: {
-    lineHeight: '$2',
+    lineHeight: '$normal',
     borderRadius: '$1',
     color: 'var(--laodeaksar-colors-typeface-primary)',
     backgroundColor: 'var(--laodeaksar-colors-foreground)',
     fontFamily: '$mono',
     fontSize: '$1',
-    padding: `2px $3`,
+    padding: `2px $1`,
   },
 
   blockquote: {
@@ -289,8 +289,8 @@ export const StyledRichTextEditor = styled(Box, {
     '&::before': {
       content: 'attr(data-placeholder)',
       position: 'absolute',
-      left: '$space$4',
-      right: '$space$4',
+      left: '$space$1',
+      right: '$space$1',
       color: 'var(--laodeaksar-colors-typeface-primary)',
     },
   },

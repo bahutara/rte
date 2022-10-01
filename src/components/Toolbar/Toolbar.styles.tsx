@@ -1,10 +1,10 @@
 import { css, styled } from "@bahutara/design-system";
 
-export const Toolbar = styled("button", {
+export const Toolbar = styled('button', {
   zIndex: 1,
-  backgroundColor: "var(--laodeaksar-color-foreground)",
-  borderBottom: `1px solid var(--laodeaksar-colors-body)`,
-  btr: "$2",
+  backgroundColor: 'var(--laodeaksar-color-brand)',
+  borderBottom: `1px solid var(--laodeaksar-form-input-border)`,
+  btr: '$2',
   padding: `$2 $3`,
 
   variants: {
@@ -12,23 +12,23 @@ export const Toolbar = styled("button", {
       true: {
         $$stickyOffset: 0,
 
-        position: "sticky",
-        top: "$$stickyOffset",
+        position: 'sticky',
+        top: '$$stickyOffset',
       },
       false: {
-        position: "relative",
-        top: "$$stickyOffset",
+        position: 'relative',
+        top: '$$stickyOffset',
       },
     },
     readOnly: {
       true: {
-        display: 'none'
-      }
-    }
+        display: 'none',
+      },
+    },
   },
   defaultVariants: {
     sticky: true,
-    readOnly: false
+    readOnly: false,
   },
 });
 
