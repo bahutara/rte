@@ -3,7 +3,7 @@ import { Box, Shadows, styled } from '@bahutara/design-system';
 export const StyledRichTextEditor = styled(Box, {
   fontSize: '$2',
   border: `1px solid var(--laodeaksar-form-input-border)`,
-  backgroundColor: 'var(--laodeaksar-colors-body)',
+  backgroundColor: 'var(--laodeaksar-colors-foreground)',
   borderRadius: '$1',
   position: 'relative',
   color: 'var(--laodeaksar-colors-typeface-primary)',
@@ -16,9 +16,9 @@ export const StyledRichTextEditor = styled(Box, {
   '.ql-container': {
     position: 'relative',
     boxSizing: 'border-box',
-    height: '100%',
+    height: '$full',
     margin: 0,
-    lineHeight: '$loose',
+    lineHeight: '$normal',
   },
 
   '.ql-editor': {
@@ -34,9 +34,9 @@ export const StyledRichTextEditor = styled(Box, {
   '.ql-tooltip': {
     position: 'absolute',
     zIndex: 1,
-    backgroundColor: 'var(--laodeaksar-colors-body)',
+    backgroundColor: 'var(--laodeaksar-colors-foreground)',
     padding: `$1 $2`,
-    border: `1px solid var(--laodeaksar-colors-foreground)`,
+    border: `1px solid var(--laodeaksar-form-input-border)`,
     boxShadow: Shadows[1],
     borderRadius: '$1',
     display: 'flex',
@@ -49,8 +49,8 @@ export const StyledRichTextEditor = styled(Box, {
     display: 'block',
     whiteSpace: 'nowrap',
     height: 32,
-    lineHeight: '32px',
-    backgroundColor: 'var(--laodeaksar-colors-body)',
+    lineHeight: '$relaxed',
+    backgroundColor: 'var(--laodeaksar-colors-foreground)',
     borderRadius: '$0',
     fontWeight: 500,
     padding: `0 $4`,
@@ -61,11 +61,11 @@ export const StyledRichTextEditor = styled(Box, {
   '.ql-remove::before': {
     content: `"Remove"`,
     cursor: 'pointer',
-    color: 'var(--laodeaksar-colors-body)',
+    color: 'var(--laodeaksar-colors-typeface-primary)',
     fontSize: '$2',
     display: 'block',
     height: 32,
-    lineHeight: '32px',
+    lineHeight: '$normal',
   },
 
   '.ql-hidden': {
@@ -107,24 +107,24 @@ export const StyledRichTextEditor = styled(Box, {
     boxSizing: 'border-box',
     fontSize: '$2',
     width: '100%',
-    color: 'var(--laodeaksar-colors-body)',
+    color: 'var(--laodeaksar-colors-typeface-primary)',
     textAlign: 'left',
     paddingLeft: '$2',
     paddingRight: '$2',
     borderRadius: '$2',
     marginRight: '$3',
-    border: `1px solid var(--laodeaksar-colors-body)`,
-    backgroundColor: 'var(--laodeaksar-colors-body)',
+    border: `1px solid var(--laodeaksar-form-input-border)`,
+    backgroundColor: 'var(--laodeaksar-colors-foreground)',
 
     '&::placeholder': {
       opacity: 1,
       userSelect: 'none',
-      color: 'var(--laodeaksar-colors-body)',
+      color: 'var(--laodeaksar-colors-typeface-primary)',
     },
 
     '&:focus': {
       outline: 'none',
-      borderColor: 'var(--laodeaksar-colors-body)',
+      borderColor: `var(--laodeaksar-form-input-border)`,
     },
   },
 
@@ -145,13 +145,13 @@ export const StyledRichTextEditor = styled(Box, {
   },
 
   '.ql-mention-list-container': {
-    border: `1px solid var(--laodeaksar-colors-body)`,
-    backgroundColor: 'var(--laodeaksar-colors-body)',
+    border: `1px solid var(--laodeaksar-form-input-border)`,
+    backgroundColor: 'var(--laodeaksar-colors-foreground)',
     borderRadius: '$1',
     overflow: 'hidden',
 
     '.ql-mention-list': {
-      color: 'var(--laodeaksar-colors-body)',
+      color: 'var(--laodeaksar-colors-typeface-primary)',
       paddingLeft: 0,
       marginTop: 0,
       margin: 0,
@@ -164,8 +164,8 @@ export const StyledRichTextEditor = styled(Box, {
       },
 
       '.selected': {
-        backgroundColor: 'var(--laodeaksar-colors-body)',
-        color: 'var(--laodeaksar-colors-body)',
+        backgroundColor: 'var(--laodeaksar-colors-typeface-foreground)',
+        color: 'var(--laodeaksar-colors-typeface-secondary)',
         textDecoration: 'none',
       },
     },
@@ -173,8 +173,8 @@ export const StyledRichTextEditor = styled(Box, {
 
   '.mention': {
     display: 'inline-block',
-    color: 'var(--laodeaksar-colors-body)',
-    backgroundColor: 'var(--laodeaksar-colors-body)',
+    color: 'var(--laodeaksar-colors-brand)',
+    backgroundColor: 'var(--laodeaksar-colors-foreground)',
     padding: '3px 5px',
     marginRight: 2,
     borderRadius: '$0',
@@ -192,7 +192,7 @@ export const StyledRichTextEditor = styled(Box, {
   },
 
   a: {
-    color: 'var(--laodeaksar-colors-body)',
+    color: 'var(--laodeaksar-colors-typeface-primary)',
     textDecoration: 'none',
   },
 
@@ -246,8 +246,8 @@ export const StyledRichTextEditor = styled(Box, {
   pre: {
     lineHeight: '$1',
     borderRadius: '$0',
-    color: 'var(--laodeaksar-colors-body)',
-    backgroundColor: 'var(--laodeaksar-colors-body)',
+    color: 'var(--laodeaksar-colors-typeface-primary)',
+    backgroundColor: 'var(--laodeaksar-colors-foregroumd)',
     fontFamily: '$mono',
     fontSize: '$1',
     padding: '$1',
@@ -258,8 +258,8 @@ export const StyledRichTextEditor = styled(Box, {
   code: {
     lineHeight: '$2',
     borderRadius: '$1',
-    color: 'var(--laodeaksar-colors-body)',
-    backgroundColor: 'var(--laodeaksar-colors-typeface-primary)',
+    color: 'var(--laodeaksar-colors-typeface-primary)',
+    backgroundColor: 'var(--laodeaksar-colors-foreground)',
     fontFamily: '$mono',
     fontSize: '$1',
     padding: `2px $3`,
@@ -270,8 +270,8 @@ export const StyledRichTextEditor = styled(Box, {
     marginLeft: 0,
     marginBottom: '$2',
     paddingLeft: '$2',
-    color: 'var(--laodeaksar-colors-body)',
-    borderLeft: `4px solid var(--laodeaksar-colors-body)`,
+    color: 'var(--laodeaksar-colors-typeface-primary)',
+    borderLeft: `4px solid var(--laodeaksar-form-input-border)`,
   },
 
   img: {
@@ -291,7 +291,7 @@ export const StyledRichTextEditor = styled(Box, {
       position: 'absolute',
       left: '$space$4',
       right: '$space$4',
-      color: 'var(--laodeaksar-colors-body)',
+      color: 'var(--laodeaksar-colors-typeface-primary)',
     },
   },
 });
